@@ -27,6 +27,9 @@
           <a class="nav-link" href="#">Liste</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="../../campus/views/dashboard.php">Dashboard</a>
+        </li>
+        <li class="nav-item">
             <a href="#" class="nav-link">Inscription</a>
         </li>
         <li class="nav-item d-flex align-self-center">

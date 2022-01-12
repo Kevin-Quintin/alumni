@@ -31,13 +31,25 @@ class userModels
         $users->execute();
     }
 
-    public function getAllUser($pdo)
+    public function getAllUserWaitingInscription($pdo)
     {
         try {
-            $sql = "SELECT * FROM users JOIN role ON role.id = users.role;";
+            $sql = "SELECT * FROM users WHERE is_actif = 0;";
             $stmt = $pdo->query($sql);
-            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $users;
+            $userWaitingInscription = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $userWaitingInscription;
+        } catch (PDOException $e) {
+            echo "erreur dans l'affichage : " . $e->getMessage();
+        }
+    }
+
+    public function getAllUserWaitingUpdate($pdo)
+    {
+        try {
+            $sql = "SELECT * FROM users WHERE is_update = 0;";
+            $stmt = $pdo->query($sql);
+            $userWaitingUpdate = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $userWaitingUpdate;
         } catch (PDOException $e) {
             echo "erreur dans l'affichage : " . $e->getMessage();
         }

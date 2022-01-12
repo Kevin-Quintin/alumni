@@ -1,23 +1,64 @@
 <?php
-require_once(dirname(__FILE__).'./../utils/database.php');
+require_once(dirname(__FILE__) . './../models/database.php');
+require_once('../models/userModels.php');
+
+$users = new userModels($pdo);
+$listUsersWaitingInscription = $users->getAllUserWaitingInscription($pdo);
+$listUsersWaitingUptade = $users->getAllUserWaitingUpdate($pdo);
+
+require_once('header.php');
 ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container-fluid">
+  <table class="table table-dark table-responsive align-middle table-striped caption-top">
+    <caption>List of waiting inscription</caption>
+    <thead>
+      <tr>
+        <th scope="col">Lastname</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Role</th>
+        <th scope="col">Profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      foreach ($listUsersWaitingInscription as $user) { ?>
+        <tr>
+          <td><?= $user['lastname'] ?></td>
+          <td><?= $user['firstname'] ?></td>
+          <td><?php echo $user['role'] == 1 ? "Eleve" : "Modérateur"; ?></td>
+          <td><a href="#" class="btn btn-outline-secondary">View profile</a></td>
+        </tr>
+      <?php }
+      ?>
+    </tbody>
+  </table>
+  <hr class="d-flex m-5">
+  <table class="table table-dark table-responsive align-middle table-striped caption-top">
+    <caption>List of waiting update</caption>
+    <thead>
+      <tr>
+        <th scope="col">Lastname</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Role</th>
+        <th scope="col">Profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      foreach ($listUsersWaitingUptade as $user) { ?>
+        <tr>
+          <td><?= $user['lastname'] ?></td>
+          <td><?= $user['firstname'] ?></td>
+          <td><?php echo $user['role'] == 1 ? "Eleve" : "Modérateur"; ?></td>
+          <td><a href="#" class="btn btn-outline-secondary">View profile</a></td>
+        </tr>
+      <?php }
+      ?>
+    </tbody>
+  </table>
+</div>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Dashboard</h1>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  </body>
-</html>
+<?php
+require_once('footer.php');
+?>
