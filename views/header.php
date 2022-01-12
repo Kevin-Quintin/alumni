@@ -30,11 +30,9 @@
             <a href="#" class="nav-link">Inscription</a>
         </li>
         <li class="nav-item d-flex align-self-center">
-            <a href="#" class="btn btn-sm btn-secondary">Connexion</a>
+            <a href="#" class="btn btn-sm btn-secondary rounded-pill">Connexion</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-    <div class="container mt-3">
-        <div class="row">
