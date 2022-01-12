@@ -10,6 +10,18 @@ class userModels
         $this->_PDO = $pdo;
     }
 
+    public function getAllUser($pdo)
+    {
+        try {
+            $sql = "SELECT * FROM users";
+            $stmt = $pdo->query($sql);
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $users;
+        } catch (PDOException $e) {
+            echo "erreur dans l'affichage : " . $e->getMessage();
+        }
+    }
+
     public function addUser($pdo, $lastname, $firstname, $pseudo, $mail, $password, $campus, $promo, $period, $github_link, $profile_picture, $anecdote, $role, $is_actif)
     {
         $sql = "INSERT INTO 'users' ('lastname','firstname','pseudo','mail','password','campus','promo','period','github_link','profile_picture','anecdote','role','is_actif') 
