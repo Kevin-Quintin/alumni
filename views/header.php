@@ -36,5 +36,3 @@
     </div>
   </div>
 </nav>
-    <div class="container mt-3">
-        <div class="row">
