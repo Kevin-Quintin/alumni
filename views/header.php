@@ -30,10 +30,10 @@
           <a class="nav-link" aria-current="page" href="../index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../campus/views/dashboard.php">Dashboard</a>
+          <a class="nav-link" href="views/dashboard.php">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">Inscription</a>
+            <a href="views/ajout_user.php" class="nav-link">Inscription</a>
         </li>
         <li class="nav-item d-flex align-self-center">
             <a href="#" class="btn btn-sm btn-primary rounded-pill px-3"><i class="bi bi-person-fill"></i> Connexion</a>
