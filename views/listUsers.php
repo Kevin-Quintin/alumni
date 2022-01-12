@@ -18,7 +18,7 @@
                 </li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link btn btn-sm btn-outline-dark rounded-pill fw-bold"><span class="mx-4">Profil</span> <i class="bi bi-arrow-right-short"></i></a>
+                <a href="views/profilUser.php" class="card-link btn btn-sm btn-outline-dark rounded-pill fw-bold"><span class="mx-4">Profil</span> <i class="bi bi-arrow-right-short"></i></a>
             </div>
         </div>
     </div>
