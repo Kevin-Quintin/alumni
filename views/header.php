@@ -32,11 +32,14 @@
         <li class="nav-item">
           <a class="nav-link" href="views/dashboard.php">Dashboard</a>
         </li>
+          <li class="nav-item d-flex align-self-center">
+            <a href="../controllers/connexionController.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
+          </li>
         <li class="nav-item">
             <a href="../views/ajout_user.php" class="nav-link">Inscription</a>
         </li>
         <li class="nav-item d-flex align-self-center">
-            <a href="../views/connexion.php" class="btn btn-sm btn-primary rounded-pill px-3"><i class="bi bi-person-fill"></i> Connexion</a>
+            <a href="../controllers/connexionController.php" class="btn btn-sm btn-primary rounded-pill px-3"><i class="bi bi-person-fill"></i> Connexion</a>
         </li>
       </ul>
     </div>
