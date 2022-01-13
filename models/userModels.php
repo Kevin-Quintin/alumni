@@ -10,13 +10,28 @@ class userModels
         $this->_PDO = $pdo;
     }
 
-    public function getAllUser($pdo)
+    public function getAllActiveUsers($pdo)
     {
         try {
-            $sql = "SELECT * FROM users";
+            $sql = "SELECT * FROM users WHERE is_actif = 1";
             $stmt = $pdo->query($sql);
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $users;
+        } catch (PDOException $e) {
+            echo "erreur dans l'affichage : " . $e->getMessage();
+        }
+    }
+
+    public function getProfil($pdo){
+        try {
+            $id = (int) $_GET['id'];
+
+            $sql= "SELECT * FROM users WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $profil = $stmt->fetch(PDO::FETCH_OBJ);
+            return $profil;
         } catch (PDOException $e) {
             echo "erreur dans l'affichage : " . $e->getMessage();
         }
