@@ -6,9 +6,13 @@ require_once('header.php');
     if (isset($message) && !empty($message)) {
         echo "<div>.$message.</div>";
     } ?>
+    <?php
+    if (isset($validate) && !empty($validate)) {
+        echo "<div>.$validate.</div>";
+    } ?>
     <div class="card mt-3">
         <div class="card-header">Je saisie mes informations</div>
-        <form class="g-3 needs-validation" method="POST" action="../controllers/add_usersController.php" enctype="multipart/form-data" novalidate>
+        <form class="g-3 needs-validation" method="POST" action="../controllers/ajoutUsersController.php" enctype="multipart/form-data" novalidate>
             <div class="card-body row">
                 <div class="col-md-4 mb-3">
                     <label for="firstname" class="form-label">Firstname</label>
