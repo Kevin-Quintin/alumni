@@ -37,23 +37,37 @@ class userModels
         }
     }
 
+<<<<<<< HEAD
     public function addUser($pdo, $lastname, $firstname, $pseudo, $mail, $password, $campus, $promo, $date_debut, $date_fin, $github_link, $profile_picture, $anecdote, )
     {
         $sql = "INSERT INTO 'users' ('lastname','firstname','pseudo','mail','password','campus','promo','period','github_link','profile_picture','anecdote') 
     VALUES (:lastname, :firstname, :pseudo, :mail, :password, :campus, :promo, :github_link, :profile_picture, :anecdote, :date_debut, :date_fin";
+=======
+    public function addUser($pdo, $lastname, $firstname, $pseudo, $mail, $password, $campus, $promo, $github_link, $profile_picture, $anecdote, $date_debut, $date_fin )
+    {
+        $sql = "INSERT INTO 'users' ('lastname','firstname','pseudo','mail','password','campus','promo','github_link','profile_picture','anecdote','date_debut', 'date_fin') 
+    VALUES (:lastname, :firstname, :pseudo, :mail, :password, :campus, :promo, :github_link, :profile_picture, :anecdote, :date_debut, :date_fin ";
+>>>>>>> aidamoj-main
         $users = $pdo->prepare($sql);
-        $users->bindValue(':lastname', $lastname, PDO::PARAM_STR);
         $users->bindValue(':firstname', $firstname, PDO::PARAM_STR);
         $users->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
         $users->bindValue(':mail', $mail, PDO::PARAM_STR);
         $users->bindValue(':password', $password, PDO::PARAM_STR);
         $users->bindValue(':campus', $campus, PDO::PARAM_STR);
         $users->bindValue(':promo', $promo, PDO::PARAM_STR);
+<<<<<<< HEAD
         $users->bindValue(':date_debut', $date_debut, PDO::PARAM_STR);
         $users->bindValue(':date_fin', $date_fin, PDO::PARAM_STR);
         $users->bindValue(':github_link', $github_link, PDO::PARAM_STR);
         $users->bindValue(':profile_picture', $profile_picture, PDO::PARAM_STR);
         $users->bindValue(':anecdote', $anecdote, PDO::PARAM_STR);
+=======
+        $users->bindValue(':github_link', $github_link, PDO::PARAM_STR);
+        $users->bindValue(':profile_picture', $profile_picture, PDO::PARAM_STR);
+        $users->bindValue(':anecdote', $anecdote, PDO::PARAM_STR);
+        $users->bindValue(':date_debut', $date_debut, PDO::PARAM_STR);
+        $users->bindValue(':date_fin', $date_fin, PDO::PARAM_STR);
+>>>>>>> aidamoj-main
         $users->execute();
     }
 
