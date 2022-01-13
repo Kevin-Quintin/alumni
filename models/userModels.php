@@ -43,6 +43,7 @@ class userModels
     VALUES (:lastname, :firstname, :pseudo, :mail, :password, :campus, :promo, :github_link, :profile_picture, :anecdote, :date_debut, :date_fin";
         $users = $pdo->prepare($sql);
         $users->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+        $users->bindValue(':lastname', $lastname, PDO::PARAM_STR);
         $users->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
         $users->bindValue(':mail', $mail, PDO::PARAM_STR);
         $users->bindValue(':password', $password, PDO::PARAM_STR);
