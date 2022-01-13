@@ -5,6 +5,7 @@ require_once(dirname(__FILE__).'./../models/userModels.php');
 $users = new userModels($pdo);
 $allActiveUsers = $users->getAllActiveUsers($pdo);
 ?>
+
 <div class="container mt-3">
     <div class="row">
         <h3 class="my-3" style="font-family: 'Roboto Slab', serif; font-weight: 900;">Profil des étudiants</h3>
