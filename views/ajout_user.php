@@ -9,7 +9,7 @@ require_once('header.php');
     <div class="card">
         <div class="card-header">Je saisie mes informations</div>
         <div class="card-body">
-            <form class="row g-3 needs-validation" method="POST" action="../controllers/add_usersController.php" novalidate>
+            <form class="row g-3 needs-validation" method="POST" action="../controllers/add_usersController.php" enctype="multipart/form-data" novalidate>
                 <div class="col-md-4">
                     <label for="firstname" class="form-label">Firstname</label>
                     <input type="text" class="form-control" id="firstname" value="Mark" name="firstname" required>
@@ -64,7 +64,7 @@ require_once('header.php');
                 </div>
                 <div class="col-md-6">
                     <label for="profile_picture" class="form-control">Profile picture</label>
-                    <input class="form-control" type="file" id="profile_picture" value="34.jpg" name="profile_picture">
+                    <input class="form-control" type="file" id="profile_picture" name="profile_picture">
                 </div>
                 <div class="col-md-12">
                     <label for="anecdote" class="form-label">Anecdote</label>
