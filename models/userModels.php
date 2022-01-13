@@ -37,7 +37,7 @@ class userModels
         }
     }
 
-    public function addUser($pdo, $lastname, $firstname, $pseudo, $mail, $password, $campus, $promo, $date_debut, $date_fin, $github_link, $profile_picture, $anecdote, )
+    public function addUser($pdo, $lastname, $firstname, $pseudo, $mail, $password, $campus, $promo, $date_debut, $date_fin, $github_link, $profile_picture, $anecdote )
     {
         $sql = "INSERT INTO 'users' ('lastname','firstname','pseudo','mail','password','campus','promo','period','github_link','profile_picture','anecdote') 
     VALUES (:lastname, :firstname, :pseudo, :mail, :password, :campus, :promo, :github_link, :profile_picture, :anecdote, :date_debut, :date_fin";
