@@ -1,9 +1,13 @@
 <?php
 include_once dirname(__FILE__) . './../models/database.php';
 require_once dirname(__FILE__) . './../models/utils.php';
+require_once dirname(__FILE__) . './../models/userModels.php';
 
 
 $message = '';
+$validate = '';
+$user = new userModels($pdo);
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -50,11 +54,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // // ************************************************************************************************************************************************** //
     if (isset($_POST["mail"]) && !empty($_POST["mail"])) {
         $mail = valid_donnees($_POST["mail"]);
-        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            $mail = $mail;
+        if ($user->getMail($pdo, $mail) != 0) {
+            if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                $mail = $mail;
+            } else {
+                $message .= "<div style=color:red>Le champ mail n'est pas conforme.</div>";
+            }
         } else {
-            $message .= "<div style=color:red>Le champ mail n'est pas conforme.</div>";
-        }
+            $message .= "<div style=color:red>Le mail existe déjà.</div>";
+        }    
     }
 
     // // ************************************************************************************************************************************************** //
@@ -63,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["pseudo"]) && !empty($_POST["pseudo"])) {
         $pseudo = valid_donnees($_POST["pseudo"]);
     } else {
-        $pseudo = "";
+        $pseudo = null;
     }
 
     // // ************************************************************************************************************************************************** //
@@ -108,12 +116,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["promo"]) && !empty($_POST["promo"])) {
         $promo = valid_donnees($_POST["promo"]);
         if (strlen($promo) <= 20) {
-            if (preg_match("/^[A-Za-z '-]+$/", $promo)) {
-                // Si tout est bon je sauvegarde promo
-                $promo = $promo;
-            } else {
-                $message .= "<div style=color:red>Le champ promo doit uniquement contenir des caractères alphabétique.</div>";
-            }
+            // if (preg_match("/^[A-Za-z '-]+$/", $promo)) {
+            // Si tout est bon je sauvegarde promo
+            $promo = $promo;
+            // } else {
+            // $message .= "<div style=color:red>Le champ promo doit uniquement contenir des caractères alphabétique.</div>";
+
         } else {
             $message .= "<div style=color:red>Le champ promo doit être inférieur à 20 caractères.</div>";
         }
@@ -145,14 +153,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["github_link"]) && !empty($_POST["github_link"])) {
         $github_link = valid_donnees($_POST["github_link"]);
     } else {
-        $github_link = "";
+        $github_link = null;
     }
 
     // ************************************************************************************************************************************************** //
     // Je vérifie le champ profile_picture ******************************************************************************************************************** //
     // ************************************************************************************************************************************************** //
 
-    if (!empty($_FILES["profile_picture"]['name'])) {
+    if (!empty($_FILES["profile_picture"]['name']) == true) {
         $filename = $_FILES["profile_picture"]["name"];
         $tempname = $_FILES["profile_picture"]["tmp_name"];
         $size = $_FILES["profile_picture"]["size"];
@@ -160,14 +168,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $file_type  = finfo_file($finfo, $tempname);
         if ($file_type != "image/jpeg" || $file_type != "image/png") {
-            if ($size < 20000000) {
-                var_dump($_FILES["profile_picture"]);
-                $str_to_arry        = explode('.',$filename);
+            if ($size < 8388608) {
+                $str_to_arry        = explode('.', $filename);
                 $extension          = end($str_to_arry); // get extension of the file.
-                $upload_location 	= dirname(__DIR__).'./public/img/'; // targeted location
-                $new_name 			= "upload-image-".time().".".$extension; // new name
-                $location_with_name = $upload_location.$new_name; // finel new file
+                $upload_location     = dirname(__DIR__) . './public/img/'; // targeted location
+                $new_name             = "upload-image-" . time() . "." . $extension; // new name
+                $location_with_name = $upload_location . $new_name; // finel new file
                 move_uploaded_file($tempname, $location_with_name);
+                $profile_picture = $filename;
             } else {
                 $message .= "<div style=color:red>La taille de la photo est excessif.</div>";
             }
@@ -184,20 +192,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["anecdote"]) && !empty($_POST["anecdote"])) {
         $anecdote = valid_donnees($_POST["anecdote"]);
     } else {
-        $anecdote = "";
+        $anecdote = null;
     }
 
     // // ************************************************************************************************************************************************** //
     // // J'insère tout en base de données ******************************************************************************************************************** //
     // // ************************************************************************************************************************************************** //
 
-    $user = new userModels($pdo);
+    
     if (empty($message)) {
-        $ajoutUser = $user->addUser($pdo, $lastname, $firstname, $pseudo, $mail, $password, $campus, $promo, $date_debut, $date_fin, $github_link, $profile_picture, $location_with_name);
+        $validate .= "<div style=color:green>Le formulaire à été envoyé avec succès.</div>";
+        $user->addUser($pdo, $lastname, $firstname, $pseudo, $mail, $password, $campus, $promo, $github_link, $profile_picture, $anecdote, $date_debut, $date_fin);
     }
+    
 }
-
-
-
 
 include_once('../views/ajout_user.php');
