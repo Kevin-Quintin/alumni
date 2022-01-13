@@ -1,11 +1,4 @@
-<?php
-require_once(dirname(__FILE__) . './../models/database.php');
-require_once('../models/userModels.php');
-
-$users = new userModels($pdo);
-$listUsersWaitingInscription = $users->getAllUserWaitingInscription($pdo);
-$listUsersWaitingUptade = $users->getAllUserWaitingUpdate($pdo);
-
+<?
 require_once('header.php');
 ?>
 
