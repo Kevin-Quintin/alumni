@@ -2,6 +2,10 @@
 require_once('header.php');
 ?>
 <div class="container-fluid">
+    <?php 
+    if (isset($message) && !empty($message)) {
+        echo "<div>.$message.</div>";
+    } ?>
     <div class="card">
         <div class="card-header">Je saisie mes informations</div>
         <div class="card-body">
