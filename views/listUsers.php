@@ -26,7 +26,7 @@
                     </li>
                 </ul>
                 <div class="card-body">
-                    <a href="views/profilUser.php?id=<?= $user['id'] ?>" class="card-link btn btn-sm btn-outline-dark rounded-pill fw-bold"><span class="mx-4">Profil</span> <i class="bi bi-arrow-right-short"></i></a>
+                    <a href="/controllers/profilUserController.php?id=<?= $user['id'] ?>" class="card-link btn btn-sm btn-outline-dark rounded-pill fw-bold"><span class="mx-4">Profil</span> <i class="bi bi-arrow-right-short"></i></a>
                 </div>
             </div>
         <?php } ?>

@@ -33,14 +33,14 @@
         <?php if(isset($_COOKIE['role'])):?> 
            <?php if ($_COOKIE['role'] == 1 ): ?>
             <li class="nav-item d-flex align-self-center">
-              <a href="../controllers/loginController.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
+              <a href="/views/logout.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
             </li>
             <?php elseif ($_COOKIE['role'] == 2 ): ?>
             <li class="nav-item">
               <a class="nav-link" href="../controllers/dashboardController.php">Dashboard</a>
             </li>
             <li class="nav-item d-flex align-self-center">
-              <a href="../controllers/loginController.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
+              <a href="/views/logout.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
             </li>
           <?php endif ?>
           <?php else: ?>
