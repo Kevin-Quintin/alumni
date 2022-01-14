@@ -4,11 +4,11 @@ require_once('header.php');
 <div class="container">
     <?php
     if (isset($message) && !empty($message)) {
-        echo "<div>$message</div>";
+        echo "<div>.$message.</div>";
     } ?>
     <?php
     if (isset($validate) && !empty($validate)) {
-        echo "<div>$validate</div>";
+        echo "<div>.$validate.</div>";
     } ?>
     <div class="card mt-3">
         <div class="card-header">Je saisie mes informations</div>

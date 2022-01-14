@@ -1,14 +1,8 @@
+
 <?php
 session_start();
-
-require_once(dirname(__FILE__) . './../models/database.php');
-require_once(dirname(__FILE__).'./../models/userModels.php');
-include './header.php';
-
-$users =  new userModels($pdo);
-$profilUser = $users->getProfil($pdo);
-
 ?>
+
 
 <div class="container mt-3">
     <div class="row">

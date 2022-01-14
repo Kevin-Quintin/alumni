@@ -29,6 +29,7 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="../index.php">Accueil</a>
         </li>
+
         <?php if(isset($_COOKIE['role'])):?> 
            <?php if ($_COOKIE['role'] == 1 ): ?>
             <li class="nav-item d-flex align-self-center">
@@ -44,7 +45,10 @@
           <?php endif ?>
           <?php else: ?>
           <li class="nav-item">
-            <a href="../views/ajout_user.php" class="nav-link">Inscription</a>
+
+
+            <a href="../controllers/ajoutUserController.php" class="nav-link">Inscription</a>
+
         </li>
         <li class="nav-item d-flex align-self-center">
             <a href="../controllers/loginController.php" class="btn btn-sm btn-primary rounded-pill px-3"><i class="bi bi-person-fill"></i> Connexion</a>

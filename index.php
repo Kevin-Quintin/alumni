@@ -2,6 +2,6 @@
 session_start();
 
 include './views/header.php'; 
-include './views/listUsers.php';
+include './controllers/listUsersController.php';
 include './views/footer.php'; 
 ?>
