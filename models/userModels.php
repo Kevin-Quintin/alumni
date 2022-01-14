@@ -13,7 +13,7 @@ class userModels
     public function getAllActiveUsers($pdo)
     {
         try {
-            $sql = "SELECT * FROM users WHERE is_actif = 1";
+            $sql = "SELECT * FROM users WHERE is_actif = 1 AND is_update = 1";
             $stmt = $pdo->query($sql);
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $users;
