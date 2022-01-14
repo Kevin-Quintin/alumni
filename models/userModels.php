@@ -117,8 +117,8 @@ class userModels
             $req->execute();
             $patients = $req->fetchAll();
             return $patients;
-        } catch (\Throwable $th) {
-            echo "Une erreur est survenu..." . $th;
+        } catch (PDOException $e) {
+            echo "erreur dans l'affichage : " . $e->getMessage();
         }
     }
 }

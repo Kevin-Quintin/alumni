@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . './../models/connexionModels.php';
+require_once dirname(__FILE__) . './../models/loginModels.php';
 require_once dirname(__FILE__) . './../models/utils.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -30,15 +30,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if(empty($message)){
         $connexionUser = new connexionModel($pdo);
-        $connexion = $connexionUser->connexionUser($pdo, $mail, $password);
-        setcookie("id", $connexion->id, "", time() - 3600);
-        setcookie('isActif', $connexion->is_actif, "", time() - 3600);
+        $login = $connexionUser->connexionUser($pdo, $mail, $password);
 
-       header("Location: /views/profilUser.php?id=".$connexion->id);
+        if($login->mail == $_POST['mail'] && $login->password == $_POST['password']) 
+        {
+            setcookie('role', $login->role, time()+3600, "/");
+            setcookie('id', $login->id, time()+3600, "/");
 
-       
+            $_SESSION['id'] = $login->id;
+            $_SESSION['firstname'] = $login->firstname;
+            $_SESSION['lastname'] = $login->lastname;
+            $_SESSION['role'] = $login->role;
+    
+        header("Location: /views/profilUser.php?id=".$login->id);
+
+
+        } else {
+            $message = "<div style=color:red>Vous devez vous inscrire. <a href='/controllers/ajoutUsersController.php'>Cliquez ici</a></div>";
+        }
     }
 
 }
 
-include('../views/connexion.php');
+include('../views/login.php');
