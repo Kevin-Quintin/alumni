@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['lastname'] = $login->lastname;
             $_SESSION['role'] = $login->role;
     
-        header("Location: /views/profilUser.php?id=".$login->id);
+        header("Location: ./profilUserController.php?id=".$login->id);
 
 
         } else {
