@@ -20,7 +20,7 @@ require_once('header.php');
           <td><?= $user['lastname'] ?></td>
           <td><?= $user['firstname'] ?></td>
           <td><?php echo $user['role'] == 1 ? "Eleve" : "Modérateur"; ?></td>
-          <td><a href="#" class="btn btn-outline-secondary">View profile</a></td>
+          <td><a href="/controllers/profilUserController.php?id=<?= $user['id'] ?>" class="btn btn-outline-secondary">View profile</a></td>
         </tr>
       <?php }
       ?>
@@ -44,7 +44,7 @@ require_once('header.php');
           <td><?= $user['lastname'] ?></td>
           <td><?= $user['firstname'] ?></td>
           <td><?php echo $user['role'] == 1 ? "Eleve" : "Modérateur"; ?></td>
-          <td><a href="#" class="btn btn-outline-secondary">View profile</a></td>
+          <td><a href="/controllers/profilUserController.php?id=<?= $user['id'] ?>" class="btn btn-outline-secondary">View profile</a></td>
         </tr>
       <?php }
       ?>

@@ -33,8 +33,9 @@ class moderateurModels
     public function valideUser($pdo, $id)
     {
         try {
-            $sql = "UPDATE 'user' SET ('is_actif') VALUES(1) where id = :$id";
+            $sql = "UPDATE users SET is_actif = 1 where id = :id;";
             $users = $pdo->prepare($sql);
+            $users->bindValue(':id', $id, PDO::PARAM_INT);
             $users->execute();
         }catch (PDOException $e) {
             echo "erreur :" .$e->getMessage();
