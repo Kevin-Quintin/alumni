@@ -30,13 +30,17 @@
           <a class="nav-link" aria-current="page" href="../index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../controllers/dashboardC.php">Dashboard</a>
+          <a class="nav-link" href="../controllers/dashboardController.php">Dashboard</a>
         </li>
           <li class="nav-item d-flex align-self-center">
             <a href="../controllers/connexionController.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
           </li>
         <li class="nav-item">
+<<<<<<< Updated upstream
             <a href="../views/ajout_user.php" class="nav-link">Inscription</a>
+=======
+            <a href="../controllers/ajoutUserController.php" class="nav-link">Inscription</a>
+>>>>>>> Stashed changes
         </li>
         <li class="nav-item d-flex align-self-center">
             <a href="../controllers/connexionController.php" class="btn btn-sm btn-primary rounded-pill px-3"><i class="bi bi-person-fill"></i> Connexion</a>
