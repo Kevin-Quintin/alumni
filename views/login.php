@@ -1,15 +1,17 @@
 <?php
+session_start();
+
 require_once('header.php');
 ?>
 
 <div class="container">
 <?php 
     if (isset($message) && !empty($message)) {
-        echo "<div>.$message.</div>";
+        echo "<div>$message</div>";
     } ?>
     <div class="card mt-3 mx-auto col-6">
         <div class="card-header">Connexion</div>
-        <form class="g-3 needs-validation" method="POST" action="../controllers/connexionController.php" novalidate>
+        <form class="g-3 needs-validation" method="POST" action="../controllers/loginController.php" novalidate>
             <div class="card-body row">
                 <div class="col-md-6">
                     <label for="mail" class="form-label">Mail</label>

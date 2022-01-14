@@ -29,22 +29,31 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="../index.php">Accueil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../controllers/dashboardController.php">Dashboard</a>
-        </li>
-          <li class="nav-item d-flex align-self-center">
-            <a href="../controllers/connexionController.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
-          </li>
-        <li class="nav-item">
-<<<<<<< Updated upstream
-            <a href="../views/ajout_user.php" class="nav-link">Inscription</a>
-=======
+
+        <?php if(isset($_COOKIE['role'])):?> 
+           <?php if ($_COOKIE['role'] == 1 ): ?>
+            <li class="nav-item d-flex align-self-center">
+              <a href="../controllers/loginController.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
+            </li>
+            <?php elseif ($_COOKIE['role'] == 2 ): ?>
+            <li class="nav-item">
+              <a class="nav-link" href="../controllers/dashboardController.php">Dashboard</a>
+            </li>
+            <li class="nav-item d-flex align-self-center">
+              <a href="../controllers/loginController.php" class="btn btn-sm btn-danger rounded-pill px-3"><i class="bi bi-person-fill"></i> Déconnexion</a>
+            </li>
+          <?php endif ?>
+          <?php else: ?>
+          <li class="nav-item">
+
+
             <a href="../controllers/ajoutUserController.php" class="nav-link">Inscription</a>
->>>>>>> Stashed changes
+
         </li>
         <li class="nav-item d-flex align-self-center">
-            <a href="../controllers/connexionController.php" class="btn btn-sm btn-primary rounded-pill px-3"><i class="bi bi-person-fill"></i> Connexion</a>
+            <a href="../controllers/loginController.php" class="btn btn-sm btn-primary rounded-pill px-3"><i class="bi bi-person-fill"></i> Connexion</a>
         </li>
+        <?php endif ?>
       </ul>
     </div>
   </div>
