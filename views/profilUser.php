@@ -1,8 +1,6 @@
-
 <?php
 session_start();
 ?>
-
 
 <div class="container mt-3">
     <div class="row">
@@ -50,19 +48,8 @@ session_start();
             </ul>
         </div>
 
-       <?php if($_COOKIE['role'] == 1 || $_COOKIE['role'] == 2 ) { 
-           if ($_COOKIE['id'] == $profilUser->id) {?>
-            <span class="d-flex justify-content-center">
-                <span class="w-25">
-                    <a href="#" class="btn btn-danger w-50 mt-5 rounded-pill">Modifier</a>
-                </span>
-            </span>  
-       <?php 
-       }
-     } 
-    ?>
-         
-    
+
+       
     </div>
 </div>
 
