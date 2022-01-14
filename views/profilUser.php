@@ -8,7 +8,7 @@ session_start();
         <h3 class="my-3" style="font-family: 'Roboto Slab', serif; font-weight: 900;">Profil</h3>
             <div class="col-lg-6 col-sm-12 d-flex justify-content-md-center justify-content-lg-end">
             <?php if(!empty($profilUser->profile_picture)) {?>
-                <img src="/public/img/34.jpg" class="card-img-top rounded-circle border w-50" alt="..." >
+                <img src="/public/img/<?= $profilUser->profile_picture ?>" class="card-img-top rounded-circle border w-50" alt="..." >
             <?php } else { ?>
               <img src="/public/img/photo-profil.png" class="card-img-top rounded-circle border w-50" alt="..." >
             <?php } ?>
@@ -49,7 +49,23 @@ session_start();
         </div>
 
 
-       
+        <?php if(isset($_COOKIE['role'])): ?>
+            <?php if($_COOKIE['role'] == 2): ?>
+                <span class="d-flex justify-content-center">
+                    <span class="w-25">
+                        <a href="#" class="btn btn-danger w-50 mt-5 rounded-pill">Modifier</a>
+                    </span>
+                </span> 
+            <?php elseif($_COOKIE['role'] == 1 ): ?>
+                    <?php elseif($_COOKIE['id'] == $profilUser->id): ?>
+                    <span class="d-flex justify-content-center">
+                        <span class="w-25">
+                            <a href="#" class="btn btn-danger w-50 mt-5 rounded-pill">Modifier</a>
+                        </span>
+                    </span>  
+            <?php endif ?>
+        <?php endif ?>
+
     </div>
 </div>
 

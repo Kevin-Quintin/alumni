@@ -47,7 +47,7 @@
           <li class="nav-item">
 
 
-            <a href="../controllers/ajoutUserController.php" class="nav-link">Inscription</a>
+            <a href="../controllers/ajoutUsersController.php" class="nav-link">Inscription</a>
 
         </li>
         <li class="nav-item d-flex align-self-center">
