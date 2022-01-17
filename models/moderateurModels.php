@@ -12,7 +12,7 @@ class moderateurModels
     public function updateUser($pdo, $id)
     {
         try {
-            $sql = "UPDATE 'users' SET ('is_update') VALUES (1) where id = :$id";
+            $sql = "UPDATE 'users' SET ('is_update') VALUES (1) where id = :id";
             $users = $pdo->prepare($sql);
             $users->execute();
         } catch (PDOException $e) {

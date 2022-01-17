@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Je vérifie le champ profile_picture ******************************************************************************************************************** //
     // ************************************************************************************************************************************************** //
 
-    if (!empty($_FILES["profile_picture"]['name']) == true) {
+    if (!empty($_FILES["profile_picture"]['name'])) {
         $filename = $_FILES["profile_picture"]["name"];
         $tempname = $_FILES["profile_picture"]["tmp_name"];
         $size = $_FILES["profile_picture"]["size"];
